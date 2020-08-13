@@ -5,7 +5,11 @@
   "projects": {
     "today-ng": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "less"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -21,11 +25,20 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "src/theme.less",
+              "src/assets/less/index.less",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.css"
             ],
+
             "scripts": []
           },
           "configurations": {
@@ -119,6 +132,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "today-ng"
+    }
+  },
+  "defaultProject": "today-ng",
+  "cli": {
+    "analytics": "5c6f0f29-ea71-4f7c-95c3-041f43c8e8ce"
+  }
 }
